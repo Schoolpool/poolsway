@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PoolsWay | Smart, Green, Executive Carpooling</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3a8a; /* Professional Deep Blue */
+            --accent: #10b981;  /* Eco-friendly Green */
+            --bg-light: #f8fafc;
+            --text-dark: #0f172a;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 1.2rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -1px;
+        }
+
+        .logo span { color: var(--accent); }
+
+        .nav-links a {
+            margin-left: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Hero & Booking Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            padding: 100px 8% 180px 8%;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; font-weight: 800; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 40px; }
+
+        /* Booking Interface Box */
+        .booking-container {
+            background: white;
+            max-width: 1000px;
+            margin: -100px auto 50px auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 0.5fr;
+            gap: 15px;
+            align-items: flex-end;
+        }
+
+        .input-group { text-align: left; }
+        .input-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #64748b;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus { border-color: var(--primary); }
+
+        .search-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .search-btn:hover { background: #059669; transform: translateY(-2px); }
+
+        /* Features Section */
+        .features {
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            transition: 0.3s;
+            border: 1px solid #f1f5f9;
+        }
+
+        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+        .icon { font-size: 2.5rem; margin-bottom: 20px; }
+
+        /* Mobile Optimization */
+        @media (max-width: 850px) {
+            .booking-container {
+                grid-template-columns: 1fr;
+                margin-top: -50px;
+            }
+            .hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Pools<span>Way</span></div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Find a Ride</a>
+            <a href="#">Offer a Ride</a>
+            <a href="#" style="color: var(--primary);">Login</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Workplace Commuting, <br>Evolved.</h1>
+        <p>Hassle-free, comfortable, and carbon-neutral rides for professionals.</p>
+    </header>
+
+    <section class="booking-container">
+        <div class="input-group">
+            <label>Leaving From</label>
+            <input type="text" placeholder="City or Office" id="from">
+        </div>
+        <div class="input-group">
+            <label>Going To</label>
+            <input type="text" placeholder="Destination" id="to">
+        </div>
+        <div class="input-group">
+            <label>Date</label>
+            <input type="date">
+        </div>
+        <div class="input-group">
+            <label>Passengers</label>
+            <input type="number" placeholder="1" min="1" max="4">
+        </div>
+        <button class="search-btn" onclick="searchRides()">Search</button>
+    </section>
+
+    <section class="features">
+        <h2>Why PoolsWay?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="icon">🌿</div>
+                <h3>Eco-Impact</h3>
+                <p>Reduce your carbon footprint. Every ride contributes to a cleaner, greener India.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🏢</div>
+                <h3>Executive Class</h3>
+                <p>Commute with verified professionals. Premium vehicles for a quiet, productive morning.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🛡️</div>
+                <h3>Safe & Secure</h3>
+                <p>Gated community and office-verified users only. Safety is our #1 priority.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: #0f172a; color: white; padding: 50px 8%; text-align: center;">
+        <p>&copy; 2026 PoolsWay.co.in | Saving the roads, one seat at a time.</p>
+    </footer>
+
+    <script>
+        function searchRides() {
+            const from = document.getElementById('from').value;
+            const to = document.getElementById('to').value;
+            if(from && to) {
+                alert("Searching for premium pools from " + from + " to " + to + "...");
+            } else {
+                alert("Please enter both pick-up and drop-off locations.");
+            }
+        }
+    </script>
+
+</body>
+</html>
